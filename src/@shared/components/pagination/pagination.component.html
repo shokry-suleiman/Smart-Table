@@ -1,6 +1,6 @@
 <div class="d-flex align-items-center justify-content-end mt-10 w-100">
-	<div class="d-flex align-items-center mre-8">
-		<div class="text-gray1 size-4 max-120 w-100 text-nowrap mre-4">Rows per page: </div>
+	<div class="d-flex align-items-center mre-10">
+		<div class="text-gray1 size-4 max-120 w-100 text-nowrap mre-4 weight-500">Rows per page: </div>
 		<select class="form-select" aria-label="rows per page" (change)="RowsPerPage($event)"
 			[(ngModel)]="itemsPerPage">
 			<option selected value="10">10</option>
@@ -9,24 +9,24 @@
 		</select>
 	</div>
 	<div class="d-flex align-items-center">
-		<div class="text-gray1 size-4 max-120 w-100 text-nowrap mre-4">Page: </div>
+		<div class="text-gray1 size-4 max-120 w-100 text-nowrap weight-500 mre-4">Page: </div>
 		<select class="form-select" aria-label="rows per page" (change)="paginate($event)" [(ngModel)]="currentPage">
 			<option *ngFor="let page of pages();let i =index">{{ i + 1}}</option>
 		</select>
-	</div>
-	<div class="pagination">
+	</div> 
+	<div class="pagination mrs-10">
 		<div class="page-item">
-			<a class="page-link" href="javascript: void(0)" aria-label="Previous" (click)="first()">
+			<a class="page-link" href="javascript: void(0)" aria-label="Previous" (click)="first()" [class.unActive]="currentPage == 1">
 				<span aria-hidden="true">&laquo;</span>
 			</a>
 		</div>
 		<div class="page-item">
-			<a class="page-link" href="javascript: void(0)" aria-label="Previous" (click)="prev()">
+			<a class="page-link" href="javascript: void(0)" aria-label="Previous" (click)="prev()" [class.unActive]="currentPage == 1">
 				<span aria-hidden="true">&lt;</span>
 			</a>
 		</div>
-		<div class="page-item">
-			<a class="page-link">
+		<div class="page-item" style="width:160px">
+			<a class="page-link text-dark">
 				{{ (currentPage-1) * 1 * itemsPerPage}}
 				-
 				{{ (currentPage-1) * 1 * itemsPerPage * 1 + currentPageItems * 1}}
@@ -35,12 +35,12 @@
 			</a>
 		</div>
 		<div class="page-item">
-			<a class="page-link" href="javascript: void(0)" aria-label="Previous" (click)="next()">
+			<a class="page-link" href="javascript: void(0)" aria-label="Previous" (click)="next()" [class.unActive]="currentPage == pages().length">
 				<span aria-hidden="true">&gt;</span>
 			</a>
 		</div>
 		<div class="page-item">
-			<a class="page-link" href="javascript: void(0)" aria-label="Next" (click)="last()">
+			<a class="page-link" href="javascript: void(0)" aria-label="Next" (click)="last()" [class.unActive]="currentPage == pages().length">
 				<span aria-hidden="true">&raquo;</span>
 			</a>
 		</div>

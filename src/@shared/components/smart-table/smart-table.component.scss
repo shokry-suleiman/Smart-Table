@@ -1,13 +1,15 @@
-th {
-    border-bottom: unset !important;
+.table td, .table th{
+    border:1px solid #eee;
 }
-td {
-    border-bottom: 1px solid rgb(#707070,0.3);
-}
-tr:last-of-type td {
-    border-bottom:  unset !important;
-}
+
 .item-image {
     height: 50px;
     object-fit: cover;
+}
+.caret {
+    right: 30px;
+    top:50%;
+}
+select {
+    background-image: url('../../../assets/icons/caret-down.svg') !important;
 }

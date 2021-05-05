@@ -1,20 +1,21 @@
-<div class="container-fluid mrt-40">
+<div class="container mrt-40">
     <div class="row">
         <div class="col-12">
-            <div class="border-radius-5 box-shadow mrt-16 mrb-30">
-                <div class="table-responsive">
+            <div class="border-radius-5 box-shadow mrt-8 mrb-20">
+                <div class="table-responsive mr-8 ">
                     <table class="table">
                       <thead>
                         <tr>
-                          <th scope="col" class="text-dark size-2 p-8 text-nowrap text-center"  *ngFor="let column of settings;let columnIndex = index">{{ column.label }}</th>
+                          <th scope="col" class="text-dark size-6 weight-500 p-8 text-nowrap text-center"  *ngFor="let column of settings;let columnIndex = index">{{ column.label }}</th>
                         </tr>
                         <tr>
                           <th scope="col" class="text-dark size-2 p-8" *ngFor="let column of settings;let columnIndex = index">
-                            <input type="text" class="form-control" style="width:120px;" id="{{ column?.name }}" placeholder="search..." *ngIf="column.search" [(ngModel)]="filterObj.search[column.name]" (input)="filter()">
-                            <select class="form-select" id="{{ column?.name }}" style="width:100px;" aria-label="Default select example" *ngIf="column.filter" [(ngModel)]="filterObj.filter[column.name]" (change)="filter()">
+                            <input type="text" class="form-control" style="width:120px;" id="{{ column?.name }}" placeholder="Search" *ngIf="column.search" [(ngModel)]="filterObj.search[column.name]" (input)="filter()">
+                            <select class="form-select bg-dark border-dark text-white" id="{{ column?.name }}" style="width:100px;" aria-label="Default select example"  [(ngModel)]="filterObj.filter[column.name]" (change)="filter()" *ngIf="column.filter">
+                              <option value=""></option>
                               <option *ngFor="let val of column.values" [value]="val">{{ val }}</option>
-                    
                             </select>
+                            
                           </th>
                         </tr>
                       </thead>
