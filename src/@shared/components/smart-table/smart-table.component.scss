@@ -1,11 +1,11 @@
 th {
-    border-bottom: 1px solid rgb(#707070,0.3);
+    border-bottom: unset !important;
 }
 td {
     border-bottom: 1px solid rgb(#707070,0.3);
 }
 tr:last-of-type td {
-    border-bottom: 1px solid rgb(#707070,0.3);
+    border-bottom:  unset !important;
 }
 .item-image {
     height: 50px;

@@ -58,4 +58,5 @@ export class PaginationComponent implements OnInit {
 		this.currentPage ++;
 		this.p.emit(this.currentPage)
 	}
+	
 }

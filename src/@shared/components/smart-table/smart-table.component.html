@@ -1,4 +1,4 @@
-<div class="container mrt-40">
+<div class="container-fluid mrt-40">
     <div class="row">
         <div class="col-12">
             <div class="border-radius-5 box-shadow mrt-16 mrb-30">
@@ -6,12 +6,21 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          <th scope="col" class="text-dark size-2 p-8" *ngFor="let column of settings;let columnIndex = index">{{ column.label }}</th>
+                          <th scope="col" class="text-dark size-2 p-8 text-nowrap text-center"  *ngFor="let column of settings;let columnIndex = index">{{ column.label }}</th>
+                        </tr>
+                        <tr>
+                          <th scope="col" class="text-dark size-2 p-8" *ngFor="let column of settings;let columnIndex = index">
+                            <input type="text" class="form-control" style="width:120px;" id="{{ column?.name }}" placeholder="search..." *ngIf="column.search" [(ngModel)]="filterObj.search[column.name]" (input)="filter()">
+                            <select class="form-select" id="{{ column?.name }}" style="width:100px;" aria-label="Default select example" *ngIf="column.filter" [(ngModel)]="filterObj.filter[column.name]" (change)="filter()">
+                              <option *ngFor="let val of column.values" [value]="val">{{ val }}</option>
+                    
+                            </select>
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let user of data;let rowIndex = index;">
-                            <td class="align-middle ptb-8 size-4 text-gray1" *ngFor="let cell of settings;let cellIndex = index">
+                        <tr *ngFor="let user of currentData;let rowIndex = index;">
+                            <td class="align-middle ptb-8 size-4 text-gray1 text-nowrap text-center" *ngFor="let cell of settings;let cellIndex = index">
                                {{ user[cell.name] }}
                               </td>
                         </tr>
@@ -21,4 +30,17 @@
             </div>
         </div>
     </div>
+</div>
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <ng-container *ngIf="tableData?.length > rowsLength">
+              <app-pagination [count]="tableData?.length" 
+                            (rows)="rows($event)" 
+                            (p)="paginate($event)" 
+                            [currentPageItems]="currentData?.length"
+            ></app-pagination>
+          </ng-container>
+      </div>
+  </div>
 </div>
