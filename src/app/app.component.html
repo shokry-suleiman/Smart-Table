@@ -2,9 +2,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <app-pagination [count]="data?.length" (rows)="rows($event)"></app-pagination>
+            <app-pagination [count]="data?.length" 
+                            (rows)="rows($event)" 
+                            (p)="paginate($event)" 
+                            [currentPageItems]="currentData?.length"
+            ></app-pagination>
         </div>
     </div>
 </div>
-
-<!-- [count]="count" (p)="page($event)" [itemsPerPage]="itemsPerPage" -->

@@ -10,6 +10,8 @@ export class AppComponent implements OnInit {
 	settings:any;
 	data:any;
 	currentData:any;
+	rowsLength:number = 10;
+	curretIndex:number =0;
 	constructor(private usersService:UsersService){
 
 	}
@@ -25,11 +27,13 @@ export class AppComponent implements OnInit {
 	}
 	
 	rows(event:any){
-		console.log('event',event)
-		if(event > this.currentData.length){
-			this.currentData = this.data.slice(0,event);
-		}else {
-			this.currentData = this.data.slice(0,event);
-		}
+		this.rowsLength = event;
+	}
+
+	paginate(event:any){
+		this.curretIndex = event - 1;
+		this.currentData = this.data.slice(this.curretIndex * this.rowsLength,
+										  Number(this.curretIndex * this.rowsLength ) + 
+										  Number(this.rowsLength));		
 	}
 }

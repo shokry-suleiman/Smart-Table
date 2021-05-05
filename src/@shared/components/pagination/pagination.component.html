@@ -1,47 +1,49 @@
 <div class="d-flex align-items-center justify-content-center mt-10 w-100">
-   <div class="d-flex align-items-center mre-8">
-       <div class="text-gray1 size-4 max-120 w-100 text-nowrap mre-4" >Rows per page: </div>
-    <select class="form-select" aria-label="rows per page" (change)="RowsPerPage($event)">
-        <option selected value="10">10</option>
-        <option value="20">20</option>
-        <option value="30">30</option>
-      </select>
-   </div>
-   <div class="d-flex align-items-center">
-    <div class="text-gray1 size-4 max-120 w-100 text-nowrap mre-4">Page: </div>
- <select class="form-select" aria-label="rows per page">
-     <option   *ngFor="let page of pages();let i =index">{{ i + 1}}</option>
-  
-   </select>
-</div>
-<div class="pagination">
-    <div class="page-item">
-      <a class="page-link" href="javascript: void(0)" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </div>
-    
-    <div class="page-item">
-      <a class="page-link"  href="javascript: void(0)" aria-label="Previous">
-        <span aria-hidden="true">&lt;</span>
-      </a>
-    </div>
-    <div class="page-item">
-        <a class="page-link">
-            1-10 of {{count}}
-        </a>
-    </div>
-    
-    <div class="page-item">
-      <a class="page-link"  href="javascript: void(0)" aria-label="Previous">
-        <span aria-hidden="true">&gt;</span>
-      </a>
-    </div>
-    <div class="page-item">
-      <a class="page-link"  href="javascript: void(0)" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </div>
-    
-</div>
+	<div class="d-flex align-items-center mre-8">
+		<div class="text-gray1 size-4 max-120 w-100 text-nowrap mre-4">Rows per page: </div>
+		<select class="form-select" aria-label="rows per page" (change)="RowsPerPage($event)"
+			[(ngModel)]="itemsPerPage">
+			<option selected value="10">10</option>
+			<option value="20">20</option>
+			<option value="30">30</option>
+		</select>
+	</div>
+	<div class="d-flex align-items-center">
+		<div class="text-gray1 size-4 max-120 w-100 text-nowrap mre-4">Page: </div>
+		<select class="form-select" aria-label="rows per page" (change)="paginate($event)" [(ngModel)]="currentPage">
+			<option *ngFor="let page of pages();let i =index">{{ i + 1}}</option>
+		</select>
+	</div>
+	<div class="pagination">
+		<div class="page-item">
+			<a class="page-link" href="javascript: void(0)" aria-label="Previous" (click)="first()">
+				<span aria-hidden="true">&laquo;</span>
+			</a>
+		</div>
+		<div class="page-item">
+			<a class="page-link" href="javascript: void(0)" aria-label="Previous" (click)="prev()">
+				<span aria-hidden="true">&lt;</span>
+			</a>
+		</div>
+		<div class="page-item">
+			<a class="page-link">
+				{{ (currentPage-1) * 1 * itemsPerPage}}
+				-
+				{{ (currentPage-1) * 1 * itemsPerPage * 1 + currentPageItems * 1}}
+				of
+				{{count}}
+			</a>
+		</div>
+		<div class="page-item">
+			<a class="page-link" href="javascript: void(0)" aria-label="Previous" (click)="next()">
+				<span aria-hidden="true">&gt;</span>
+			</a>
+		</div>
+		<div class="page-item">
+			<a class="page-link" href="javascript: void(0)" aria-label="Next" (click)="last()">
+				<span aria-hidden="true">&raquo;</span>
+			</a>
+		</div>
+
+	</div>
 </div>
