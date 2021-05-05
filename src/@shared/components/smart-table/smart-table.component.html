@@ -1,0 +1,24 @@
+<div class="container mrt-40">
+    <div class="row">
+        <div class="col-12">
+            <div class="border-radius-5 box-shadow mrt-16 mrb-30">
+                <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col" class="text-dark size-2 p-8" *ngFor="let column of settings;let columnIndex = index">{{ column.label }}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let user of data;let rowIndex = index;">
+                            <td class="align-middle ptb-8 size-4 text-gray1" *ngFor="let cell of settings;let cellIndex = index">
+                               {{ user[cell.name] }}
+                              </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
